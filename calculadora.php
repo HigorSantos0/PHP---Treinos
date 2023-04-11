@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
@@ -31,13 +31,27 @@
         case '/':
             $resultado = $valorA / $valorB;
             break;
+        case 'sin':
+            $resultado = sin($valorA);
+            break;
+        case 'cos':
+            $resultado = cos($valorA);
+            break;
+        case 'tan':
+            $resultado = tan($valorA);
+            break;
         default:
             $resultado = 0;
     }
 
     // Exibe os valores passados e o resultado
-    echo "Os valores passados foram $valorA $operacao $valorB <br>";
-    echo "O resultado será $resultado";
+    if ($operacao == 'sin' || $operacao == 'cos' || $operacao == 'tan') {
+        echo "O valor passado foi $valorA <br>";
+        echo "O $operacao de $valorA é $resultado";
+    } else {
+        echo "Os valores passados foram $valorA $operacao $valorB <br>";
+        echo "O resultado será $resultado";
+    }
     ?>
 
     <form method="post">
@@ -47,6 +61,9 @@
             <option value="-" <?php if ($operacao == '-') echo 'selected'; ?>>-</option>
             <option value="*" <?php if ($operacao == '*') echo 'selected'; ?>>*</option>
             <option value="/" <?php if ($operacao == '/') echo 'selected'; ?>>/</option>
+            <option value="sin" <?php if ($operacao == 'sin') echo 'selected'; ?>>sin</option>
+            <option value="cos" <?php if ($operacao == 'cos') echo 'selected'; ?>>cos</option>
+            <option value="tan" <?php if ($operacao == 'tan') echo 'selected'; ?>>tan</option>
         </select>
         <input type="text" name="numB">
         <input type="submit" value="Calcular">
